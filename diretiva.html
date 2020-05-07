@@ -18,19 +18,12 @@
      -->
     <div id="app">
         <input type="text" v-model=txtDigitado>
-        <br>
-        {{ txtDigitado }}
-        <br>
-        <div v-if="txtDigitado == 1">
-            <img :src="srcImg" :title="titleImg" width="100px"><!-- usar apenas do : é o mesmo que v-bind:  -->
-        </div>
-        <div v-else-if="txtDigitado == 2">
-            <img :src="srcImg2" :title="titleImg" width="100px"><!-- usar apenas do : é o mesmo que v-bind:  -->
-        </div>
-        <div v-else-if="txtDigitado == 3">
-            <img :src="srcImg3" :title="titleImg" width="100px"><!-- usar apenas do : é o mesmo que v-bind:  -->
-        </div>
-        <div v-else><p>Digite um número de 1 à 3</p></div>
+        &nbsp;
+        <button v-on:click="alteraNome()">
+            Chamar Altera Nome
+        </button>
+        <br><br>
+        <label v-text="txtDigitado"></label>
     </div>
 
     <!--
@@ -48,12 +41,13 @@
              * Data é apenas para dados. Não usar função
              */
             data: {
-                txtDigitado: '',
-                srcImg: 'vue.png',
-                srcImg2: 'vue2.png',
-                srcImg3: 'vue3.png',
-                titleImg: 'Logo'
-            }
+                txtDigitado: ''
+            },
+            methods: {
+                alteraNome() {
+                    this.txtDigitado = 'Garcia';
+                }
+            },
         });
 
     </script>
