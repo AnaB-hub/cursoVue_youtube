@@ -11,21 +11,43 @@
 
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 
-    <button onclick="carregar()">Chamar mudança</button>
-    
     <div id="app">
-        
+        <painel></painel>
+        <painel></painel>
+    </div>
+
+    <div id="app2">
+        <painel></painel>
+        <painel></painel>
     </div>
 
     <script>
-        function carregar() {
-            app.$mount("#app"); //fala para o nosso app ser criado, montado
-        }
-        const app = new Vue({
-            data: {
-                nome: `Olá mundo`
+
+        Vue.component('painel', {
+            data() {
+                return {
+                    titulo: 'Painel de Notícias'
+                }
             },
-            template: "<h1>{{ nome }}</h1>"
+            methods: {
+                alert() {
+                    this.titulo = 'Alerta do painel';
+                }
+            },
+            //template apenas retorna um item, no caso, uma div
+            template: `
+                <div>
+                    <h1>{{titulo}}</h1>
+                    <button @click="alert()">Alert</button>
+                </div>`
+        });
+
+        const app = new Vue({
+            el: '#app'
+        });
+
+        const app2 = new Vue({
+            el: '#app2'
         });
     </script>
 
