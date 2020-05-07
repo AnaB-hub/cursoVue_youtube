@@ -1,0 +1,76 @@
+<!-- 
+    ! = gera todo o HTML
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loop</title>
+</head>
+
+<body>
+
+    <!--
+        #app + ctrl espaço: gera a div com id app
+     -->
+    <div id="app">
+        <!-- <div v-for="img in imagens">
+            <img :src="img" width="100px">
+        </div> -->
+
+        <!-- <p v-for="(fruta, index) in frutas">
+            {{ index }} - {{ fruta.nome }} - {{ fruta.cor }}
+        </p> -->
+
+        <!--Frutas-->
+        <!-- <ul>
+            <li v-for="(value, key, index) in frutas[0]">
+                {{ index }} - {{ key }}: {{ value }}
+            </li>
+        </ul> -->
+
+        <ul> <!-- Usuário -->
+            <li v-for="(value, key, index) in usuario">
+                <b>{{ key }}:</b> {{ value }}
+            </li>
+        </ul>
+    </div>
+
+    <!--
+        A importação do Vue deve vir ANTES de seu uso
+    -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+    <script>
+        /**
+         * Cria uma instância do Vue - new Vue
+         */
+        new Vue({
+            el: '#app',
+            /**
+             * Data é apenas para dados. Não usar função
+             */
+            data: {
+                imagens: ['vue.png', 'vue2.png','vue3.png'],
+                frutas: [
+                    { nome:'Pera', cor:'Verde' },
+                    { nome:'Uva', cor:'Verde' },
+                    { nome:'Maçã', cor:'Vermelha' }
+                ],
+                usuario: {
+                    nome: 'Ana',
+                    telefone:'16 99999-9999',
+                    email: 'ana@gmail.com',
+                    sobrenome: 'Garcia'
+                }
+            }
+        });
+
+    </script>
+
+</body>
+
+</html>
