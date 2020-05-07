@@ -11,15 +11,7 @@
 
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 
-    <div id="app">
-        <painel></painel>
-        <painel></painel>
-    </div>
-
-    <div id="app2">
-        <painel></painel>
-        <painel></painel>
-    </div>
+    <div id="app"></div>
 
     <script>
 
@@ -43,12 +35,66 @@
         });
 
         const app = new Vue({
-            el: '#app'
+            el: "#app",
+            data: {
+                nome: 1
+            },
+            methods: {
+                atualizar() {
+                    this.nome ++;
+                },
+                destruir() {
+                    this.$destroy();
+                }
+            },
+            template: 
+                `<div>
+                    <button @click="atualizar()">Atualizar</button>
+                    <button @click="destruir()">Destruir</button>
+                    <painel></painel>
+                    <p>{{nome}}</p>
+                </div>`,
+            beforeCreate() {
+                console.log('Antes de Criar tudo');
+            },
+            created() {
+                console.log('Quando foi criado a nossa Vue');
+            },
+            beforeMount() {
+                console.log('Antes de montar');
+            },
+            mounted() {
+                console.log('Tudo montado');
+            },
+            beforeUpdate() {
+                console.log('Antes de atualizar');
+                console.log('O valor é: ' + this.nome);
+            },
+            updated() {
+                console.log('Depois de Atualizar');
+                console.log('Agora o valor é: ' + this.nome);
+            },
+            beforeDestroy() {
+                console.log('Antes de ser destruído');
+            },
+            destroyed() {
+                console.log('DESTRUÍDO');
+            },
         });
 
-        const app2 = new Vue({
-            el: '#app2'
-        });
+        // const app = new Vue({
+        //     methods: {
+                
+        //     },
+        //     template: "<painel></painel>",
+        //     beforeCreate() {
+        //         console.log('Antes de Criar tudo');
+        //     },
+        //     created() {
+        //         console.log('Quando foi criado a nossa Vue');
+        //     },
+        // }).$mount('#app');
+
     </script>
 
 </body>
