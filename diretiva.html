@@ -18,12 +18,9 @@
      -->
     <div id="app">
 
-        <input type="text" placeholder="Digite" v-model=txtDigitado 
-            v-on:keyup.enter="submeterNome()">
+        <input type="text" placeholder="Digite" v-model=txtDigitado v-on:keyup.enter="submeterNome()">
         <ul>
-            <li v-for="item in array"
-                style="background: white;"
-                @click="alerta($event)">
+            <li v-for="item in array" style="background: white;" @click="alerta($event)">
                 {{ item }}
             </li>
         </ul>
@@ -37,14 +34,30 @@
         yellow
         <input @click="colorir($event.target.value)" type="radio" name="cor" value="yellow">
 
-        <p v-bind:class="classParagrafo">Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt dolores inventore doloribus tempora voluptatum quas, obcaecati autem esse soluta quam corrupti ullam! Exercitationem sunt harum enim quos mollitia reprehenderit odit.</p>
+        <button @click="vermelho()">Vermelho</button>
+        <button @click="verde()">Verde</button>
+
+        <p v-bind:class="{red: cores.vermelho, green: cores.verde}">Lorem ipsum dolor sit amet consectetur adipisicing
+            elit. Deserunt dolores inventore doloribus tempora voluptatum quas, obcaecati autem esse soluta quam
+            corrupti ullam! Exercitationem sunt harum enim quos mollitia reprehenderit odit.</p>
     </div>
 
     <style>
-        .red {background-color: red;}
-        .green {background-color: green;}
-        .blue {background-color: blue;}
-        .yellow {background-color: yellow;}
+        .red {
+            background-color: red;
+        }
+
+        .green {
+            background-color: green;
+        }
+
+        .blue {
+            background-color: blue;
+        }
+
+        .yellow {
+            background-color: yellow;
+        }
     </style>
 
     <!--
@@ -64,7 +77,11 @@
             data: {
                 txtDigitado: '',
                 array: [],
-                classParagrafo: 'red'
+                classParagrafo: 'red',
+                cores: {
+                    vermelho: true,
+                    verde: false
+                }
             },
             methods: {
                 submeterNome() {
@@ -83,6 +100,14 @@
                 },
                 colorir(cor) {
                     this.classParagrafo = cor;
+                },
+                vermelho() {
+                    this.cores.vermelho = true;
+                    this.cores.verde = false;
+                },
+                verde() {
+                    this.cores.vermelho = false;
+                    this.cores.verde = true;
                 }
             },
         });
