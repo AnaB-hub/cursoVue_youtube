@@ -17,13 +17,13 @@
         #app + ctrl espaço: gera a div com id app
      -->
     <div id="app">
-        <form v-on:submit.prevent="alteraNome('Garcia')">
-            <input type="text" v-model=txtDigitado>
-            &nbsp;
-            <button type="submit">
-                Add
-            </button>
-        </form>
+        <input type="text" placeholder="Digite" v-model=txtDigitado 
+            v-on:keyup.enter="alteraNome()">
+        <ul>
+            <li v-for="item in array">
+                {{ item }}
+            </li>
+        </ul>
     </div>
 
     <!--
@@ -41,12 +41,13 @@
              * Data é apenas para dados. Não usar função
              */
             data: {
-                txtDigitado: ''
+                txtDigitado: '',
+                array: []
             },
             methods: {
-                alteraNome(sobrenome) {
-                    // event.preventDefault();// que passar o evento, é assim que evita o comportamente padrão de regarregar a pagina
-                    this.txtDigitado = sobrenome;
+                alteraNome() {
+                    this.array.push(this.txtDigitado);
+                    this.txtDigitado = '';
                 }
             },
         });
