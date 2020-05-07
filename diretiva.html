@@ -17,6 +17,7 @@
         #app + ctrl espaço: gera a div com id app
      -->
     <div id="app">
+
         <input type="text" placeholder="Digite" v-model=txtDigitado 
             v-on:keyup.enter="submeterNome()">
         <ul>
@@ -26,7 +27,25 @@
                 {{ item }}
             </li>
         </ul>
+
+        red
+        <input @click="colorir($event.target.value)" checked type="radio" name="cor" value="red">
+        green
+        <input @click="colorir($event.target.value)" type="radio" name="cor" value="green">
+        blue
+        <input @click="colorir($event.target.value)" type="radio" name="cor" value="blue">
+        yellow
+        <input @click="colorir($event.target.value)" type="radio" name="cor" value="yellow">
+
+        <p v-bind:class="classParagrafo">Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt dolores inventore doloribus tempora voluptatum quas, obcaecati autem esse soluta quam corrupti ullam! Exercitationem sunt harum enim quos mollitia reprehenderit odit.</p>
     </div>
+
+    <style>
+        .red {background-color: red;}
+        .green {background-color: green;}
+        .blue {background-color: blue;}
+        .yellow {background-color: yellow;}
+    </style>
 
     <!--
         A importação do Vue deve vir ANTES de seu uso
@@ -44,7 +63,8 @@
              */
             data: {
                 txtDigitado: '',
-                array: []
+                array: [],
+                classParagrafo: 'red'
             },
             methods: {
                 submeterNome() {
@@ -60,6 +80,9 @@
                     } else {
                         event.target.style = "background: white";
                     }
+                },
+                colorir(cor) {
+                    this.classParagrafo = cor;
                 }
             },
         });
