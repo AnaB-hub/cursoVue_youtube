@@ -11,38 +11,21 @@
 
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 
+    <button onclick="carregar()">Chamar mudança</button>
     
     <div id="app">
-        <button v-on:click="imprimir()">Chamar mudança</button>
-        <br><br>
-        {{ nome }}
-    </div>
-
-    <div id="app2">
-        {{ nome }}
+        
     </div>
 
     <script>
-        let msg = "Minha aplicação";
-
+        function carregar() {
+            app.$mount("#app"); //fala para o nosso app ser criado, montado
+        }
         const app = new Vue({
-            el: '#app',
             data: {
-                nome: `${msg} 1`
+                nome: `Olá mundo`
             },
-            methods: {
-                imprimir() {
-                    app.nome = "Outra msg";
-                    app2.nome = "Outra msg";
-                }
-            },
-        });
-
-        const app2 = new Vue({
-            el: '#app2',
-            data: {
-                nome: `${msg} 2`
-            }
+            template: "<h1>{{ nome }}</h1>"
         });
     </script>
 
