@@ -1,0 +1,56 @@
+<!-- 
+    ! = gera todo o HTML
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <!--
+        #app + ctrl espaço: gera a div com id app
+     -->
+    <div id="app">
+        <img 
+            v-bind:src="srcImg" 
+            :title="titleImg"><!-- usar apenas do : é o mesmo que v-bind:  -->
+        <hr>
+        <a v-bind:href="url">Vue</a>
+        <hr>
+        <!-- Se for add string e não uma propriedade, usar aspas simples '' -->
+        <p v-text="'Texto qualquer'"></p>
+        <p v-text="txtParagrafo"></p>
+        <div v-html="txtParagrafoDiv"></div>
+    </div>
+    
+    <!--
+        A importação do Vue deve vir ANTES de seu uso
+    -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    
+    <script>
+        /**
+         * Cria uma instância do Vue - new Vue
+         */
+        new Vue({
+            el: '#app',
+            /**
+             * Data é apenas para dados. Não usar função
+             */
+            data: {
+                srcImg: 'vue.png',
+                titleImg: 'Logo',
+                url: 'http://vuejs.org',
+                txtParagrafo: 'Outra msg',
+                txtParagrafoDiv: '<b>Teste</b> <br> qualquer'
+            }
+        });
+
+    </script>
+
+</body>
+</html>
