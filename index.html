@@ -20,7 +20,7 @@
         <p>{{ frutas[1] }}</p>
         <p>Aluno: {{ aluno.name }}</p>
         <p>{{ 4 + num1 }}</p>
-        <p>{{ fun() }}</p>
+        <p>{{ metodo(0) }}</p>
     </div>
     
     <!--
@@ -34,19 +34,21 @@
          */
         new Vue({
             el: '#app',
+            /**
+             * Data é apenas para dados. Não usar função
+             */
             data: {
                 msg: 'Teste de mensagem',
                 isVerdade: true,
                 frutas: ['pera', 'uva', 'maça'],
                 aluno: { name: 'Ana' },
-                num1: 1,
-                // fun: function() {
-                //     return 'Mensagem da função';
-                // }
-                fun: () => {
-                    return 'Mensagem da função';
+                num1: 1
+            },
+            methods: {
+                metodo(indice) {
+                    return 'Frutas: ' + this.frutas[indice];
                 }
-            }
+            },
         });
 
     </script>
