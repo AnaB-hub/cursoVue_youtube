@@ -12,6 +12,18 @@
 <body>
     
     <!--
+        #app + ctrl espaço: gera a div com id app
+     -->
+    <div id="app">
+        <p>{{ msg }}</p>
+        <p>{{ isVerdade ? 'Verdade' : 'Falso' }}</p>
+        <p>{{ frutas[1] }}</p>
+        <p>Aluno: {{ aluno.name }}</p>
+        <p>{{ 4 + num1 }}</p>
+        <p>{{ fun() }}</p>
+    </div>
+    
+    <!--
         A importação do Vue deve vir ANTES de seu uso
     -->
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
@@ -21,7 +33,20 @@
          * Cria uma instância do Vue - new Vue
          */
         new Vue({
-            
+            el: '#app',
+            data: {
+                msg: 'Teste de mensagem',
+                isVerdade: true,
+                frutas: ['pera', 'uva', 'maça'],
+                aluno: { name: 'Ana' },
+                num1: 1,
+                // fun: function() {
+                //     return 'Mensagem da função';
+                // }
+                fun: () => {
+                    return 'Mensagem da função';
+                }
+            }
         });
 
     </script>
