@@ -17,13 +17,13 @@
         #app + ctrl espaço: gera a div com id app
      -->
     <div id="app">
-        <input type="text" v-model=txtDigitado>
-        &nbsp;
-        <button v-on:click="alteraNome()">
-            Chamar Altera Nome
-        </button>
-        <br><br>
-        <label v-text="txtDigitado"></label>
+        <form v-on:submit.prevent="alteraNome('Garcia')">
+            <input type="text" v-model=txtDigitado>
+            &nbsp;
+            <button type="submit">
+                Add
+            </button>
+        </form>
     </div>
 
     <!--
@@ -44,8 +44,9 @@
                 txtDigitado: ''
             },
             methods: {
-                alteraNome() {
-                    this.txtDigitado = 'Garcia';
+                alteraNome(sobrenome) {
+                    // event.preventDefault();// que passar o evento, é assim que evita o comportamente padrão de regarregar a pagina
+                    this.txtDigitado = sobrenome;
                 }
             },
         });
